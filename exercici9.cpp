@@ -6,7 +6,7 @@
 using namespace std;
 using namespace Eigen;
 
-
+#define PI 3.141592654
 
 int main()
 {
@@ -20,9 +20,13 @@ int main()
 
     int t = 28;
     int b = 41;
+    float tr, br;
 
-    R0b <<  cos(t), -sin(t), sin(t), cos(t);
-    Rbs <<  cos(b), -sin(b), sin(b), cos(b);
+    tr = t*180/PI;
+    br = b*180/PI;
+
+    R0b <<  cos(tr), -sin(tr), sin(tr), cos(tr);
+    Rbs <<  cos(br), -sin(br), sin(br), cos(br);
     T0b <<  R0b, P0, 0, 0, 1;
     Tbs <<  Rbs, mb, 0, 0, 1;
     q = T0b*Tbs;
